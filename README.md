@@ -21,8 +21,8 @@ Copyright Rachid Meraoumia AKA Shashka</br>Distributed under license (don't know
     - [ ] Add a Cartography system (Once all machine of the network has been discovered
     - [ ] Show it in dashboard 
   - Port Scanner
-    - [ ] Add a banner grabber
-    - [ ] Report to a CSV All Ports (Open closed filtered) and the service found if so
+    - [X] Add a banner grabber
+    - [X] Report to a CSV All Ports (Open closed filtered) and the service found if so
   - Subdomains Scanner
     - [ ] Recover all domain found with server Code into a CSV file
     - [ ] Show them in Dashboard
