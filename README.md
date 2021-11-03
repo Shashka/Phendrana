@@ -12,10 +12,10 @@ Copyright Rachid Meraoumia AKA Shashka</br>Distributed under license (don't know
 
 # To-Do
 
-- 👁 RECON
+- 👁 WEB RECON
   - [ ] Gather Information from web (keyword based search with a bot)
   - [ ] Gather Information Actively (Mailing System ?)
-- 🔎 SCANNER
+- 🔎 LOCAL RECON SCANNER
   - Network Scanner
     - [X] Add a network detection and probing system
     - [ ] Add a Cartography system (Once all machine of the network has been discovered)
