@@ -33,14 +33,55 @@ export_csv() => Do i really need to explain this one ? Ok i'll do it, it will re
 
 class Pscanner():
 
-    def __init__(self, ip, port, threads, queue):
+    def __init__(self, ip, port, threads=None, queue=None):
 
         self.ip = ip
         self.port = port
         self.threads = threads
         self.queue = queue
 
+
     def scanner(self, port):
+
+        if self.threads == None and self.queue == None:
+
+            try:
+
+                s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                result = s.connect_ex((self.ip, port))
+
+                if result == 0:
+
+                    try:
+
+                        serviceTCP = socket.getservbyport(port, "tcp")
+                        serviceUDP = socket.getservbyport(port, "udp")
+                        dic_port[port] = "OPEN | TCP Service " + serviceTCP + " | UDP Service " + serviceUDP
+                        print("PORT " + str(port) + "\033[92m" + " [OPEN] | TCP => "+serviceTCP+" | UDP => "+serviceUDP+ "\033[0m")
+
+                    except Exception as e:
+
+                        print("[Error] Port or Protocol not found, server potentially down or protected\n")
+                        pass
+
+                else:
+
+                    try:
+
+                        print("PORT " + str(port) + "\033[91m" + " [CLOSED]" + "\033[0m")
+                        port_output.append("PORT " + str(port) + " [CLOSED]")
+                        dic_port[port] = "CLOSED"
+                        s.close()
+
+                    except Exception as e:
+
+                        print("[Error] Port or Protocol not found, server potentially down or protected\n")
+                        pass
+
+
+            except Exception as e:
+
+                print("[ERROR] Error during scan")
 
         try:
 

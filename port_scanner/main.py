@@ -87,7 +87,15 @@ while choice != "r" or choice != "R" or choice != "s" or choice != "S":
 
     elif choice == "s" or choice == "S":
 
-        print("incomming")
+        ip_addr = str(input("[+] Enter target to scan (Default Loopback): "))
+        port = int(input("[+] Enter port : "))
+
+        if ip_addr == "":
+            ip_addr = "127.0.0.1"
+
+        scanner = Pscanner(ip_addr, port)
+        scanner.scanner(scanner.port)
+
         break
 
     else:
