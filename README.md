@@ -17,8 +17,8 @@ Copyright Rachid Meraoumia AKA Shashka</br>Distributed under license (don't know
   - [ ] Gather Information Actively (Mailing System ?)
 - 🔎 SCANNER
   - Network Scanner
-    - [ ] Add a network detection system
-    - [ ] Add a Cartography system (Once all machine of the network has been discovered
+    - [X] Add a network detection and probing system
+    - [ ] Add a Cartography system (Once all machine of the network has been discovered)
     - [ ] Show it in dashboard 
   - Port Scanner
     - [X] Add a banner grabber
