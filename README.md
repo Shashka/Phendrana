@@ -7,7 +7,7 @@ It's goal is to automate one or more phases such as Recon or Data gathering, it 
 Developpement begins the 29th October 2021</br>
 
 # Author
-MERAOUMIA Rachid / Shashka</br>Cybersecurity Engineer
+Shashka</br>Cybersecurity Engineer
 Copyright Rachid Meraoumia AKA Shashka</br>Distributed under license CC-BT-NC-SA 4.0</br>
 
 # To-Do
