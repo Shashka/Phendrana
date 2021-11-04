@@ -37,4 +37,5 @@ Copyright Rachid Meraoumia AKA Shashka</br>Distributed under license CC-BT-NC-SA
   - [ ] Create Layout
   - [ ] Add a Login Page
   - [ ] Create Callback function to populate the dashboard
+  - [ ] Suggest solution in the report to fix found anomalies 
   - [ ] Make a report based on the systhesis of the dashboard
