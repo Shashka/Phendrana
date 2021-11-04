@@ -1,6 +1,7 @@
 import scapy.all as scapy
 import re
-
+import csv
+import utils.utils as ut
 """
 Net Scanner class is a little bit better developped than Port scanner, cuz this one was supposed to be a class instead of portscanner
 So, this class provides multiple methods to scan local network (ARP, DNS records, SOA, MX)
@@ -64,33 +65,10 @@ class net_scanner:
         print("[INFO] Following mail server has been found : "+str(results))
         return results
 
-    def export_csv_dict(self, dict, csv_name):
-        with open(csv_name, "w") as f:
-            for key in dict.keys():
-                f.write("%s,%s\n" % (key, dict[key]))
-
-    def export_csv_string(self, string, csv_name):
-
-       with open(csv_name, 'w') as file:
-            file.write(string)
-            file.write('\n')
-
-    def export_csv_list(self, list, csv_name):
-
-        tmplst = []
-
-        for elem in list:
-            tostr = elem.decode("utf-8")
-            tmplst.append(tostr)
-
-        with open(csv_name, 'w') as file:
-            for x in tmplst:
-              file.write(x)
-              file.write('\n')
-
     def full_scan(self, dport, mask, qname):
 
-        char_list = ['b', "'"]
+        char_list = ["b", "'"]
+        fields = ["IP", "MAC"]
         arp_results = {}
         soa_results = []
         mx_results = []
@@ -102,8 +80,8 @@ class net_scanner:
         mod = ''.join(str(soa_results))
         soa_sanitized = re.sub('['+ ''.join(char_list)+']', '', mod)
 
-        self.export_csv_dict(arp_results, "arp_result.csv")
-        self.export_csv_string(soa_sanitized, "soa_result.csv")
-        self.export_csv_list(mx_results, "mx_result.csv")
+        ut.export_csv_dict(arp_results, fields,"../dashboard/data/arp_result.csv")
+        ut.export_csv_string(soa_sanitized, "../dashboard/data/soa_result.csv")
+        ut.export_csv_list(mx_results, "../dashboard/data/mx_result.csv")
 
         print("[INFO] All results files have been exported to csv")

@@ -1,6 +1,6 @@
 #region IMPORTS
 import threading
-from queue import Queue
+import csv
 import socket
 
 #endregion
@@ -31,7 +31,7 @@ export_csv() => Do i really need to explain this one ? Ok i'll do it, it will re
 
 """
 
-class Pscanner():
+class port_scanner:
 
     def __init__(self, ip, port, threads=None, queue=None):
 
@@ -129,13 +129,5 @@ class Pscanner():
 
         while True:
             worker = self.queue.get()
-            Pscanner.scanner(self, worker)
+            port_scanner.scanner(self, worker)
             self.queue.task_done()
-
-    def export_csv(self, port_dic):
-
-        with open("pscanresults.csv", "w") as f:
-
-            for key in port_dic.keys():
-
-                f.write("%s,%s\n" % (key, port_dic[key]))

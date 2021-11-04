@@ -5,7 +5,8 @@ import time
 from tqdm import tqdm
 from queue import Queue
 from pscanner_class import dic_port
-from pscanner_class import Pscanner
+from pscanner_class import port_scanner
+import utils.utils as ut
 
 #endregion
 #region COLORS
@@ -48,7 +49,7 @@ while choice != "r" or choice != "R" or choice != "s" or choice != "S":
 
             ip_addr = "127.0.0.1"
 
-        scanner = Pscanner(ip_addr, port, thread_nbr, q)
+        scanner = port_scanner(ip_addr, port, thread_nbr, q)
 
 
         print("\n" + "-" * 60 + "\n")
@@ -80,7 +81,8 @@ while choice != "r" or choice != "R" or choice != "s" or choice != "S":
                 print("PORT " + str(key) + " " + FAIL + str(value) + ENDC)
 
         #May god have mercy on your soul if you change parameter of export_csv here...
-        scanner.export_csv(dic_port)
+        fields = ["PORT", "STATUS"]
+        ut.export_csv_dict(dic_port, fields,"../dashboard/data/port_result.csv" )
         print("[INFO] Scan Complete a csv file has been created")
 
         break
@@ -93,7 +95,7 @@ while choice != "r" or choice != "R" or choice != "s" or choice != "S":
         if ip_addr == "":
             ip_addr = "127.0.0.1"
 
-        scanner = Pscanner(ip_addr, port)
+        scanner = port_scanner(ip_addr, port)
         scanner.scanner(scanner.port)
 
         break
